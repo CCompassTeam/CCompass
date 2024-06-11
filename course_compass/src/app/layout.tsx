@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Hanken_Grotesk } from 'next/font/google';
 import './globals.css';
 import { NextUIProvider } from '@nextui-org/react';
 
-const inter = Inter({ subsets: ['latin'] });
+const HankenGrotesk = Hanken_Grotesk({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'CourseCompass',
@@ -19,7 +19,9 @@ export default function RootLayout({
   return (
     <html>
       <NextUIProvider>
-        <body className={inter.className}>{children}</body>
+        <body className={`${HankenGrotesk.className} h-screen`}>
+          {children}
+        </body>
       </NextUIProvider>
     </html>
   );
