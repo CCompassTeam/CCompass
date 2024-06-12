@@ -44,7 +44,7 @@ const footerItems = [
 
 export default function Home() {
   return (
-    <div className="flex flex-col justify-evenly items-center h-full">
+    <div className="flex flex-col justify-evenly items-center h-screen">
       <section className="flex flex-col justify-center items-center gap-4">
         <h1 className="flex flex-col items-center text-6xl font-extrabold ">
           Degree Planning{' '}
