@@ -1,4 +1,5 @@
 import { Button } from '@nextui-org/react';
+import { GradientIcon } from '@/components/ui/icons';
 
 const footerItems = [
   {
@@ -74,29 +75,5 @@ export default function Home() {
         ))}
       </footer>
     </div>
-  );
-}
-
-function GradientIcon({ path }: { path: React.ReactNode }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth={1.5}
-      stroke="currentColor"
-      className="size-10"
-    >
-      <defs>
-        <linearGradient id="gradient1" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" style={{ stopColor: '#8987FF', stopOpacity: 1 }} />
-          <stop
-            offset="100%"
-            style={{ stopColor: '#D106F2', stopOpacity: 1 }}
-          />
-        </linearGradient>
-      </defs>
-      {path}
-    </svg>
   );
 }

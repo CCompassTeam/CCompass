@@ -1,3 +1,4 @@
+import { GradientCourseCompassIcon } from '@/components/ui/icons';
 import { Button } from '@nextui-org/react';
 
 export default function SignUp() {
@@ -5,6 +6,7 @@ export default function SignUp() {
     return (
       <div className="flex flex-col justify-evenly items-center h-screen">
         <section className="flex flex-col justify-center items-center gap-4">
+            <GradientCourseCompassIcon/>
           <h1 className="flex flex-col items-center text-6xl font-bold p-2">
             Welcome to Course Compass!
           </h1>
