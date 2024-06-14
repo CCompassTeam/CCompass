@@ -42,41 +42,6 @@ const footerItems = [
   },
 ];
 
-export default function Home() {
-  return (
-    <div className="flex flex-col justify-evenly items-center h-screen">
-      <section className="flex flex-col justify-center items-center gap-4">
-        <h1 className="flex flex-col items-center text-6xl font-extrabold ">
-          Degree Planning{' '}
-          <span className="bg-gradient-to-r from-gradient-text-l to-gradient-text-r bg-clip-text text-transparent">
-            Meets AI.
-          </span>
-        </h1>
-        <p className="flex flex-col items-center font-medium leading-tight">
-          With CourseCompass, you can plan out your{' '}
-          <span>personalized degree in 10 minutes with the help of AI.</span>
-        </p>
-        <Button className="bg-gradient-to-r from-gradient-button-l to-gradient-button-r font-bold text-white px-8 py-3">
-          Get Started!
-        </Button>
-      </section>
-
-      <footer className="flex w-full justify-evenly pt-20 rounded-t-[50%] bg-gradient-to-b from-gradient-background-t via-gradient-background-m to-white">
-        {footerItems.map((item) => (
-          <div
-            key={item.title}
-            className="flex flex-col items-center text-center gap-4"
-          >
-            <GradientIcon path={item.icon} />
-            <h3 className="font-bold text-lg">{item.title}</h3>
-            <p className="w-60 leading-tight">{item.description}</p>
-          </div>
-        ))}
-      </footer>
-    </div>
-  );
-}
-
 function GradientIcon({ path }: { path: React.ReactNode }) {
   return (
     <svg
@@ -98,5 +63,40 @@ function GradientIcon({ path }: { path: React.ReactNode }) {
       </defs>
       {path}
     </svg>
+  );
+}
+
+export default function Home() {
+  return (
+    <div className="flex flex-col justify-evenly items-center h-screen">
+      <section className="flex flex-col justify-center items-center gap-4">
+        <h1 className="flex flex-col items-center text-6xl font-extrabold ">
+          Degree Planning
+          <span className="bg-gradient-to-r from-gradient-text-l to-gradient-text-r bg-clip-text text-transparent">
+            Meets AI.
+          </span>
+        </h1>
+        <p className="flex flex-col items-center font-medium leading-tight">
+          With CourseCompass, you can plan out your
+          <span> personalized degree in 10 minutes with the help of AI.</span>
+        </p>
+        <Button className="bg-gradient-to-r from-gradient-button-l to-gradient-button-r font-bold text-white px-8 py-3">
+          Get Started!
+        </Button>
+      </section>
+
+      <footer className="flex w-full justify-evenly pt-20 rounded-t-[50%] bg-gradient-to-b from-gradient-background-t via-gradient-background-m to-white">
+        {footerItems.map((item) => (
+          <div
+            key={item.title}
+            className="flex flex-col items-center text-center gap-4"
+          >
+            <GradientIcon path={item.icon} />
+            <h3 className="font-bold text-lg">{item.title}</h3>
+            <p className="w-60 leading-tight">{item.description}</p>
+          </div>
+        ))}
+      </footer>
+    </div>
   );
 }
