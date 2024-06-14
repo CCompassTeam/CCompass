@@ -1,4 +1,5 @@
 import { Button } from '@nextui-org/react';
+import Link from 'next/link';
 import { GradientIcon } from '@/components/ui/icons';
 
 const footerItems = [
@@ -48,17 +49,19 @@ export default function Home() {
     <div className="flex flex-col justify-evenly items-center h-screen">
       <section className="flex flex-col justify-center items-center gap-4">
         <h1 className="flex flex-col items-center text-6xl font-extrabold ">
-          Degree Planning{' '}
+          Degree Planning
+          {' '}
           <span className="bg-gradient-to-r from-gradient-text-l to-gradient-text-r bg-clip-text text-transparent">
             Meets AI.
           </span>
         </h1>
         <p className="flex flex-col items-center font-medium leading-tight">
-          With CourseCompass, you can plan out your{' '}
+          With CourseCompass, you can plan out your
+          {' '}
           <span>personalized degree in 10 minutes with the help of AI.</span>
         </p>
         <Button className="bg-gradient-to-r from-gradient-button-l to-gradient-button-r font-bold text-white px-8 py-3">
-          Get Started!
+          <Link href="/auth"> Get started</Link>
         </Button>
       </section>
 
