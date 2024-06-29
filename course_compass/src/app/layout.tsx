@@ -1,6 +1,6 @@
-import type { Metadata } from 'next';
-import { Hanken_Grotesk } from 'next/font/google';
-import './globals.css';
+import type { Metadata } from "next";
+import { Hanken_Grotesk } from "next/font/google";
+import "./globals.css";
 import {
   NextUIProvider,
   Navbar,
@@ -8,15 +8,19 @@ import {
   NavbarContent,
   NavbarItem,
   Link,
-} from '@nextui-org/react';
-import { BellIcon, UserCircleIcon, CourseCompassLogoIcon } from '@/components/ui/icons';
+} from "@nextui-org/react";
+import {
+  BellIcon,
+  UserCircleIcon,
+  CourseCompassLogoIcon,
+} from "@/components/ui/icons";
 
-const HankenGrotesk = Hanken_Grotesk({ subsets: ['latin'] });
+const HankenGrotesk = Hanken_Grotesk({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'CourseCompass',
+  title: "CourseCompass",
   description:
-    'With CourseCompass, you can plan out your personalized degree in 10 minutes with the help of AI.',
+    "With CourseCompass, you can plan out your personalized degree in 10 minutes with the help of AI.",
 };
 
 export default function RootLayout({
@@ -40,7 +44,7 @@ function NavBar() {
   return (
     <Navbar>
       <NavbarBrand>
-        <Link>
+        <Link href="/">
           <CourseCompassLogoIcon />
         </Link>
       </NavbarBrand>
@@ -69,7 +73,7 @@ function NavBar() {
           <Link
             isBlock
             color="foreground"
-            href="#"
+            href="reviews"
             className="font-medium text-lg"
           >
             REVIEWS

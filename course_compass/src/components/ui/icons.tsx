@@ -65,10 +65,10 @@ export function GradientIcon({ path }: { path: React.ReactNode }) {
     >
       <defs>
         <linearGradient id="gradient1" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" style={{ stopColor: '#8987FF', stopOpacity: 1 }} />
+          <stop offset="0%" style={{ stopColor: "#8987FF", stopOpacity: 1 }} />
           <stop
             offset="100%"
-            style={{ stopColor: '#D106F2', stopOpacity: 1 }}
+            style={{ stopColor: "#D106F2", stopOpacity: 1 }}
           />
         </linearGradient>
       </defs>
@@ -79,17 +79,49 @@ export function GradientIcon({ path }: { path: React.ReactNode }) {
 
 export function GradientCourseCompassIcon() {
   return (
-    <svg width="69" height="99" viewBox="0 0 69 99" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M61.0685 35.6987L44.2571 26.1088L22.7541 38.5286V62.8963L44.2571 75.5518L61.0685 65.8833L68.4968 71.8574L49.5981 82.705L44.2571 98.3475L38.9848 82.705L13.8401 68.0843V56.883L0 51.6557L13.8401 45.6817V33.4192L39.2528 18.7084L44.2571 0.326172L50.6689 19.5334L68.4968 29.8819L61.0685 35.6987Z" fill="black" />
-      <path d="M61.0685 35.6987L44.2571 26.1088L22.7541 38.5286V62.8963L44.2571 75.5518L61.0685 65.8833L68.4968 71.8574L49.5981 82.705L44.2571 98.3475L38.9848 82.705L13.8401 68.0843V56.883L0 51.6557L13.8401 45.6817V33.4192L39.2528 18.7084L44.2571 0.326172L50.6689 19.5334L68.4968 29.8819L61.0685 35.6987Z" fill="url(#paint0_linear_577_1727)" />
-      <path d="M50.6689 44.1882L58.2536 38.5286L44.2571 29.8819L25.8818 40.3365V61.4028L44.2571 71.8574L58.2536 62.8963L50.6689 57.6297L44.2571 61.4028L34.6394 55.7432V45.6817L44.2571 40.3365L50.6689 44.1882Z" fill="black" />
-      <path d="M50.6689 44.1882L58.2536 38.5286L44.2571 29.8819L25.8818 40.3365V61.4028L44.2571 71.8574L58.2536 62.8963L50.6689 57.6297L44.2571 61.4028L34.6394 55.7432V45.6817L44.2571 40.3365L50.6689 44.1882Z" fill="url(#paint1_linear_577_1727)" />
+    <svg
+      width="69"
+      height="99"
+      viewBox="0 0 69 99"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M61.0685 35.6987L44.2571 26.1088L22.7541 38.5286V62.8963L44.2571 75.5518L61.0685 65.8833L68.4968 71.8574L49.5981 82.705L44.2571 98.3475L38.9848 82.705L13.8401 68.0843V56.883L0 51.6557L13.8401 45.6817V33.4192L39.2528 18.7084L44.2571 0.326172L50.6689 19.5334L68.4968 29.8819L61.0685 35.6987Z"
+        fill="black"
+      />
+      <path
+        d="M61.0685 35.6987L44.2571 26.1088L22.7541 38.5286V62.8963L44.2571 75.5518L61.0685 65.8833L68.4968 71.8574L49.5981 82.705L44.2571 98.3475L38.9848 82.705L13.8401 68.0843V56.883L0 51.6557L13.8401 45.6817V33.4192L39.2528 18.7084L44.2571 0.326172L50.6689 19.5334L68.4968 29.8819L61.0685 35.6987Z"
+        fill="url(#paint0_linear_577_1727)"
+      />
+      <path
+        d="M50.6689 44.1882L58.2536 38.5286L44.2571 29.8819L25.8818 40.3365V61.4028L44.2571 71.8574L58.2536 62.8963L50.6689 57.6297L44.2571 61.4028L34.6394 55.7432V45.6817L44.2571 40.3365L50.6689 44.1882Z"
+        fill="black"
+      />
+      <path
+        d="M50.6689 44.1882L58.2536 38.5286L44.2571 29.8819L25.8818 40.3365V61.4028L44.2571 71.8574L58.2536 62.8963L50.6689 57.6297L44.2571 61.4028L34.6394 55.7432V45.6817L44.2571 40.3365L50.6689 44.1882Z"
+        fill="url(#paint1_linear_577_1727)"
+      />
       <defs>
-        <linearGradient id="paint0_linear_577_1727" x1="0" y1="49.3368" x2="68.4968" y2="49.3368" gradientUnits="userSpaceOnUse">
+        <linearGradient
+          id="paint0_linear_577_1727"
+          x1="0"
+          y1="49.3368"
+          x2="68.4968"
+          y2="49.3368"
+          gradientUnits="userSpaceOnUse"
+        >
           <stop stopColor="#3D15DC" />
           <stop offset="1" stopColor="#C502F6" />
         </linearGradient>
-        <linearGradient id="paint1_linear_577_1727" x1="0" y1="49.3368" x2="68.4968" y2="49.3368" gradientUnits="userSpaceOnUse">
+        <linearGradient
+          id="paint1_linear_577_1727"
+          x1="0"
+          y1="49.3368"
+          x2="68.4968"
+          y2="49.3368"
+          gradientUnits="userSpaceOnUse"
+        >
           <stop stopColor="#3D15DC" />
           <stop offset="1" stopColor="#C502F6" />
         </linearGradient>
@@ -97,3 +129,21 @@ export function GradientCourseCompassIcon() {
     </svg>
   );
 }
+
+export const ChevronDownIcon = ({ size = 24, color = "currentColor" }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M19 9l-7 7-7-7"
+      stroke={color}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);

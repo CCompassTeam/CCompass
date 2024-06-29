@@ -1,7 +1,7 @@
-import { NextUIProvider } from '@nextui-org/react';
-import { Hanken_Grotesk } from 'next/font/google';
+import { NextUIProvider } from "@nextui-org/react";
+import { Hanken_Grotesk } from "next/font/google";
 
-const HankenGrotesk = Hanken_Grotesk({ subsets: ['latin'] });
+const HankenGrotesk = Hanken_Grotesk({ subsets: ["latin"] });
 
 export default function OnboardLayout({
   children,
@@ -11,9 +11,7 @@ export default function OnboardLayout({
   return (
     <html lang="en">
       <NextUIProvider>
-        <body className={`${HankenGrotesk.className}`}>
-          {children}
-        </body>
+        <body className={`${HankenGrotesk.className}`}>{children}</body>
       </NextUIProvider>
     </html>
   );
