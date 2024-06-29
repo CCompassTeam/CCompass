@@ -19,12 +19,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <NextUIProvider>
-        <body className={`${HankenGrotesk.className}`}>
+      <body className={`${HankenGrotesk.className}`}>
+        <NextUIProvider>
           <NavBar />
           {children}
-        </body>
-      </NextUIProvider>
+        </NextUIProvider>
+      </body>
     </html>
   );
 }
