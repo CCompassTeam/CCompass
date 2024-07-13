@@ -29,13 +29,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html>
-      <NextUIProvider>
-        <body className={`${HankenGrotesk.className}`}>
+    <html lang="en">
+      <body className={`${HankenGrotesk.className}`}>
+        <NextUIProvider>
           <NavBar />
           {children}
-        </body>
-      </NextUIProvider>
+        </NextUIProvider>
+      </body>
     </html>
   );
 }

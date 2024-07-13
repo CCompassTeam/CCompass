@@ -1,5 +1,8 @@
+// src/app/reviews/page.tsx
+
 "use client";
 import { useState, useRef, useEffect } from "react";
+import { useRouter } from "next/navigation"; // Import useRouter from next/navigation
 import {
   Button,
   Dropdown,
@@ -36,6 +39,8 @@ export default function Reviews() {
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
   const searchRef = useRef<HTMLDivElement>(null);
 
+  const router = useRouter(); // Initialize useRouter
+
   const handleSearch = (value: string) => {
     setSearchText(value);
   };
@@ -69,23 +74,39 @@ export default function Reviews() {
     };
   }, []);
 
+  const navigateToLeaveReview = () => {
+    router.push("/reviewHistory");
+  };
+
   return (
-    <div className="text-xl flex flex-col items-center gap-4 mt-[5rem]">
-      <div className="flex flex-row gap-[8rem]">
-        <div className="flex items-center gap-2" ref={searchRef}>
-          <p className="text-xl font-bold">Search for a:</p>
-          <Button
-            onClick={() => setSearchType("Course")}
-            color={searchType === "Course" ? "primary" : "default"}
-          >
-            Course
-          </Button>
-          <Button
-            onClick={() => setSearchType("Instructor")}
-            color={searchType === "Instructor" ? "primary" : "default"}
-          >
-            Instructor
-          </Button>
+    <div className="text-xl p-6 items-start gap-4 mt-[5rem] ml-[2rem]">
+      <div className="gap-[2rem] flex flex-col">
+        <div className="flex flex-row justify-between">
+          <div className="flex flex-row items-center" ref={searchRef}>
+            <p className="text-xl font-bold mr-2">Search for a:</p>
+            <Button
+              onClick={() => setSearchType("Course")}
+              color={searchType === "Course" ? "primary" : "default"}
+            >
+              Course
+            </Button>
+            <Button
+              onClick={() => setSearchType("Instructor")}
+              color={searchType === "Instructor" ? "primary" : "default"}
+            >
+              Instructor
+            </Button>
+          </div>
+          <div>
+            <Button
+              className="bg-gradient-to-r from-gradient-button-l to-gradient-button-r font-bold text-white px-8 py-3"
+              onClick={navigateToLeaveReview} // Navigate to the leave review page
+            >
+              Leave a Review
+            </Button>
+          </div>
+        </div>
+        <div className="flex flex-row gap-4">
           <Dropdown>
             <div className="flex flex-row items-center">
               <Input
@@ -121,20 +142,17 @@ export default function Reviews() {
             Filter
           </p>
         </div>
-        <Button className="bg-gradient-to-r from-gradient-button-l to-gradient-button-r font-bold text-white px-8 py-3">
-          Leave a Review
-        </Button>
       </div>
-      <table className="mt-8 w-full max-w-4xl text-left border-collapse">
+      <table className="mt-8 w-full max-w-4xl text-left">
         <thead>
-          <tr className="border-b text-3xl font-bold">
+          <tr className="border-b-3 text-3xl font-bold">
             <th className="p-2">Course Code</th>
             <th className="p-2">Course Title</th>
           </tr>
         </thead>
         <tbody>
           {courses.map((course) => (
-            <tr key={course.code} className="border-b w-[30rem]">
+            <tr key={course.code} className="border-b-2 w-full cursor-pointer">
               <td className="p-2 pl-3 pt-[2rem] pb-[2rem]">{course.code}</td>
               <td className="p-2 pl-3 pt-[2rem] pb-[2rem]">{course.title}</td>
             </tr>
