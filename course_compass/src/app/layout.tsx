@@ -14,6 +14,7 @@ import {
   UserCircleIcon,
   CourseCompassLogoIcon,
 } from "@/components/ui/icons";
+import { CourseProvider } from "@/app/context/CourseContext";
 
 const HankenGrotesk = Hanken_Grotesk({ subsets: ["latin"] });
 
@@ -32,8 +33,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${HankenGrotesk.className}`}>
         <NextUIProvider>
-          <NavBar />
-          {children}
+          <CourseProvider>
+            <NavBar />
+            {children}
+          </CourseProvider>
         </NextUIProvider>
       </body>
     </html>

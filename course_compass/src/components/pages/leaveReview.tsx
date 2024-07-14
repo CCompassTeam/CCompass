@@ -3,6 +3,7 @@
 import { Button } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import { ArrowBackIcon } from "../ui/icons";
+import { useCourse } from "../../app/context/CourseContext";
 
 const courses = [
   {
@@ -41,9 +42,19 @@ const courses = [
 
 export default function CourseHistory() {
   const router = useRouter();
+  const { setSelectedCourse } = useCourse();
 
   const navigateBack = () => {
     router.push("/reviews");
+  };
+
+  const handleReviewClick = (course: {
+    code: string;
+    instructor: string;
+    review: boolean;
+  }) => {
+    setSelectedCourse(course);
+    router.push("/reviewForm");
   };
 
   return (
@@ -61,7 +72,7 @@ export default function CourseHistory() {
                 <td className="py-4 text-right">
                   <Button
                     className="bg-gradient-to-r from-gradient-button-l to-gradient-button-r text-white"
-                    onClick={navigateBack}
+                    onClick={() => handleReviewClick(course)}
                   >
                     {course.review ? "Leave Review" : "View Review"}
                   </Button>
