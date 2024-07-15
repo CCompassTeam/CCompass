@@ -20,10 +20,10 @@ export default function ReviewForm() {
   const [professorComprehensive, setProfessorComprehensive] =
     useState<number>(3);
   const [professorFluency, setProfessorFluency] = useState<number>(3);
-  const [professorPace, setProfessorPace] = useState<number>(3);
+  const [professorPace, setProfessorPace] = useState<number>(2);
   const [courseDifficulty, setCourseDifficulty] = useState<number>(3);
   const [courseLoad, setCourseLoad] = useState<number>(3);
-  const [coursePace, setCoursePace] = useState<number>(3);
+  const [coursePace, setCoursePace] = useState<number>(2);
   const [takeAgain, setTakeAgain] = useState<string>("Yes");
   const [courseReview, setCourseReview] = useState<string>("");
   const [instructorReview, setInstructorReview] = useState<string>("");
@@ -108,12 +108,52 @@ export default function ReviewForm() {
               <p>
                 <strong>Instructor Review:</strong> {instructorReview}
               </p>
+
               <Button
                 className="bg-red-500 font-bold text-white px-8 py-3 mt-4"
-                onClick={handleDeleteReview}
+                onClick={onOpen}
               >
                 Delete Review
               </Button>
+
+              <Modal
+                isOpen={isOpen}
+                onOpenChange={onOpenChange}
+                isDismissable={false}
+                isKeyboardDismissDisabled={true}
+              >
+                <ModalContent>
+                  {(onClose) => (
+                    <>
+                      <ModalHeader className="flex flex-col gap-1">
+                        Delete a review?
+                      </ModalHeader>
+                      <ModalBody>
+                        <p>
+                          Once you delete your review you will not be able to
+                          leave another review for this course.
+                        </p>
+                      </ModalBody>
+                      <ModalFooter>
+                        <Button
+                          color="danger"
+                          variant="light"
+                          onPress={onClose}
+                        >
+                          Cancel
+                        </Button>
+                        <Button
+                          className="flex items-center bg-red-500 text-white px-8 py-3"
+                          onClick={handleDeleteReview}
+                          onPress={onClose}
+                        >
+                          Delete
+                        </Button>
+                      </ModalFooter>
+                    </>
+                  )}
+                </ModalContent>
+              </Modal>
             </div>
           </div>
         ) : (
@@ -337,7 +377,7 @@ export default function ReviewForm() {
               </label>
               <p className="font-bold mt-[1rem]">About the course?</p>
               <Textarea
-                placeholder=""
+                placeholder="Leave a review about the course"
                 minRows={3}
                 value={courseReview}
                 onChange={(e) => setCourseReview(e.target.value)}
@@ -345,14 +385,17 @@ export default function ReviewForm() {
               />
               <p className="font-bold mt-[1rem]">About the instructor?</p>
               <Textarea
-                placeholder=""
+                placeholder="Leave a review about the instructor"
                 minRows={3}
                 value={instructorReview}
                 onChange={(e) => setInstructorReview(e.target.value)}
               />
             </section>
 
-            <Button onPress={onOpen} className="flex w-fit">
+            <Button
+              onPress={onOpen}
+              className="bg-gradient-to-r from-gradient-button-l to-gradient-button-r text-white flex w-fit"
+            >
               Submit Review
             </Button>
             <Modal
