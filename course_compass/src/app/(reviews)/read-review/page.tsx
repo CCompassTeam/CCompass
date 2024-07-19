@@ -1,32 +1,74 @@
 'use client';
 import React from 'react';
-import { Slider } from '@nextui-org/react';
+import {
+  Slider,
+  Card,
+  CardHeader,
+  CardFooter,
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  useDisclosure,
+} from '@nextui-org/react';
 import { useCourse } from '../../context/CourseContext';
 
 export default function Page() {
   const { selectedCourse } = useCourse();
 
   return (
-    <div className="flex flex-col items-center gap-8">
+    <div className="flex flex-col items-center gap-12">
       <div className="flex flex-col items-center pt-6">
         <h1 className="text-xl font-bold">{selectedCourse.instructor}</h1>
         <p className="text-gray-400">{`Courses taught: ${selectedCourse.code}`}</p>
       </div>
       <div id="review-metrics" className="flex flex-col gap-8">
-        <ReviewMetric review={{ type: 'Comprehensiveness', value: 3 }} />
-        <ReviewMetric review={{ type: 'Fluency', value: 4 }} />
-        <ReviewMetric review={{ type: 'Pace', value: 3 }} />
+        <ReviewMetricCard review={{ type: 'Comprehensiveness', value: 3 }} />
+        <ReviewMetricCard review={{ type: 'Fluency', value: 4 }} />
+        <ReviewMetricCard review={{ type: 'Pace', value: 3 }} />
+      </div>
+      <div
+        id="review-comments"
+        className="max-w-screen-lg grid grid-cols-3 gap-4"
+      >
+        <ReviewCommentCard
+          comment={{
+            content:
+              'Highly recommend! Professor Sara Lee is very articulate and patient.',
+            author: 'Anonymous',
+            courseTaken: 'ABCXXX',
+            termTaken: 'Fall 2023',
+          }}
+        />
+        <ReviewCommentCard
+          comment={{
+            content: 'Do not recommend.',
+            author: 'Anonymous',
+            courseTaken: 'DEFXXX',
+            termTaken: 'Summer 2024',
+          }}
+        />
+        <ReviewCommentCard
+          comment={{
+            content:
+              'Sara Lee is a great instructor. She is very knowledgeable and helpful.',
+            author: 'Anonymous',
+            courseTaken: 'GHIXXX',
+            termTaken: 'Winter 2024',
+          }}
+        />
       </div>
     </div>
   );
 }
 
-interface Review {
+interface ReviewMetric {
   type: 'Comprehensiveness' | 'Fluency' | 'Pace' | string;
   value: number;
 }
 
-function ReviewMetric(this: any, { review }: { review: Review }) {
+function ReviewMetricCard({ review }: { review: ReviewMetric }) {
   const type: {
     [key: string]: {
       numberOfSteps: number;
@@ -108,5 +150,47 @@ function ReviewMetric(this: any, { review }: { review: Review }) {
       />
       <p className="font-semibold">{currentType.getStatement(review.value)}</p>
     </div>
+  );
+}
+
+interface ReviewComment {
+  content: string;
+  author: string;
+  courseTaken: string;
+  termTaken: string;
+}
+
+function ReviewCommentCard({ comment }: { comment: ReviewComment }) {
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
+  return (
+    <Card
+      onPress={onOpen}
+      isPressable={true}
+      className="w-60 h-60 border-2 justify-between font-semibold"
+    >
+      <CardHeader className="text-left">{comment.content}</CardHeader>
+      <CardFooter className="justify-end">• {comment.author}</CardFooter>
+
+      <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+        <ModalContent>
+          <ModalHeader></ModalHeader>
+          <ModalBody className="justify-between gap-12">
+            <p>{comment.content}</p>
+            <div>
+              <p>
+                <span className="font-semibold">Course taken: </span>
+                {comment.courseTaken}
+              </p>
+              <p>
+                <span className="font-semibold">Term taken: </span>
+                {comment.termTaken}
+              </p>
+            </div>
+          </ModalBody>
+          <ModalFooter>• {comment.author}</ModalFooter>
+        </ModalContent>
+      </Modal>
+    </Card>
   );
 }
