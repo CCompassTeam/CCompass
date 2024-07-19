@@ -80,7 +80,7 @@ function ReviewMetric(this: any, { review }: { review: Review }) {
 
   return (
     <div className="flex flex-col gap-4 items-center">
-      <h2 className="text-lg font-bold bg-gradient-to-r from-gradient-button-l to-gradient-button-r bg-clip-text text-transparent">
+      <h2 className="text-lg font-bold bg-gradient-to-r from-gradient-primary-l to-gradient-primary-r bg-clip-text text-transparent">
         {review.type}
       </h2>
       <Slider
@@ -93,14 +93,14 @@ function ReviewMetric(this: any, { review }: { review: Review }) {
         color="secondary"
         renderThumb={(props) => (
           <div {...props} className="group top-1/2 rounded-full">
-            <span className="bg-gradient-to-r from-gradient-button-l to-gradient-button-r rounded-full w-4 h-4 block" />
+            <span className="bg-gradient-to-r from-gradient-primary-l to-gradient-primary-r rounded-full w-4 h-4 block" />
           </div>
         )}
         classNames={{
           base: 'w-96 gap-3',
-          step: 'w-2 h-2 data-[in-range=true]:bg-gradient-to-r from-gradient-button-l to-gradient-button-r',
+          step: 'w-2 h-2 data-[in-range=true]:bg-gradient-to-r from-gradient-primary-l to-gradient-primary-r',
           filler:
-            'bg-gradient-to-r from-gradient-button-l to-gradient-button-r',
+            'bg-gradient-to-r from-gradient-primary-l to-gradient-primary-r',
         }}
         marks={currentType.marks}
         disableThumbScale={true}

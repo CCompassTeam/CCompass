@@ -394,7 +394,7 @@ export default function ReviewForm() {
 
             <Button
               onPress={onOpen}
-              className="bg-gradient-to-r from-gradient-button-l to-gradient-button-r text-white flex w-fit"
+              className="bg-gradient-to-r from-gradient-primary-l to-gradient-primary-r text-white flex w-fit"
             >
               Submit Review
             </Button>
@@ -421,7 +421,7 @@ export default function ReviewForm() {
                         Cancel
                       </Button>
                       <Button
-                        className="flex items-center bg-gradient-to-r from-gradient-button-l to-gradient-button-r text-white px-8 py-3"
+                        className="flex items-center bg-gradient-to-r from-gradient-primary-l to-gradient-primary-r text-white px-8 py-3"
                         onClick={handleSubmit}
                         onPress={onClose}
                       >

@@ -99,7 +99,7 @@ export default function Reviews() {
           </div>
           <div>
             <Button
-              className="bg-gradient-to-r from-gradient-button-l to-gradient-button-r font-bold text-white px-8 py-3"
+              className="bg-gradient-to-r from-gradient-primary-l to-gradient-primary-r font-bold text-white px-8 py-3"
               onClick={navigateToLeaveReview} // Navigate to the leave review page
             >
               Leave a Review

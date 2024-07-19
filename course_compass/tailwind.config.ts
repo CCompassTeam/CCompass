@@ -17,10 +17,10 @@ const config: Config = {
       },
       colors: {
         gradient: {
-          'text-l': '#1024D3',
-          'text-r': '#FF00E5',
-          'button-l': '#3D15DC',
-          'button-r': '#C502F6',
+          'heading-l': '#1024D3',
+          'heading-r': '#FF00E5',
+          'primary-l': '#3D15DC',
+          'primary-r': '#C502F6',
           'background-t': '#E6E2FA',
           'background-m': '#F8EEFC',
         },

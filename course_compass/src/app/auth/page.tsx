@@ -12,9 +12,7 @@ export default function SignUp() {
           Welcome to Course Compass!
         </h1>
 
-        <h2 className="flex flex-col items-center text-3xl p-2">
-          Sign up
-        </h2>
+        <h2 className="flex flex-col items-center text-3xl p-2">Sign up</h2>
         <form className="flex flex-col items-left gap-2 w-4/5">
           Email
           <input
@@ -34,8 +32,9 @@ export default function SignUp() {
             className="w-150 p-2 border border-gray-300 rounded-md"
             required
           />
-          <Button className="bg-gradient-to-r from-gradient-button-l to-gradient-button-r font-bold text-white px-8 py-3 w-1/5 justify-center">
-            {// TODO: replace link with registration logic
+          <Button className="bg-gradient-to-r from-gradient-primary-l to-gradient-primary-r font-bold text-white px-8 py-3 w-1/5 justify-center">
+            {
+              // TODO: replace link with registration logic
             }
             <Link href="/onboard"> Lets go </Link>
           </Button>

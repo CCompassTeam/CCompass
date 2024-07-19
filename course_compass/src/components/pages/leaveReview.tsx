@@ -86,7 +86,7 @@ export default function CourseHistory() {
                     </Link>
                   ) : (
                     <Button
-                      className="bg-gradient-to-r from-gradient-button-l to-gradient-button-r text-white"
+                      className="bg-gradient-to-r from-gradient-primary-l to-gradient-primary-r text-white"
                       onClick={() => handleReviewClick(course)}
                     >
                       Leave Review
