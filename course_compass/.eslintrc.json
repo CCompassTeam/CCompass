@@ -3,18 +3,13 @@
     "next/core-web-vitals",
     "airbnb",
     "airbnb-typescript"
-    
   ],
-
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": "./tsconfig.json"
   },
   "rules": {
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "quotes": ["error", "double", { "allowTemplateLiterals": true, "avoidEscape": true }]
   }
 }
-  
-
-  
-
