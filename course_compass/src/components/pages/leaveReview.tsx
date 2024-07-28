@@ -11,7 +11,9 @@ const courses = [
     instructor: 'Professor Sara Lee',
     review: true,
   },
-  { code: 'CPSC 110 (2023 Winter)', instructor: 'Dr. Harry', review: true },
+  { code: 'CPSC 110 (2023 Winter)', 
+    instructor: 'Dr. Harry', 
+    review: true },
   {
     code: 'CPSC 210 (2021 Winter)',
     instructor: 'Professor Arrvindh',
@@ -27,7 +29,9 @@ const courses = [
     instructor: 'Professor Gomez',
     review: false,
   },
-  { code: 'LIT 200 (2023 Fall)', instructor: 'Professor Imamu', review: false },
+  { code: 'LIT 200 (2023 Fall)', 
+    instructor: 'Professor Imamu', 
+    review: false },
   {
     code: 'HIST 400 (2022 Winter)',
     instructor: 'Professor Harel',

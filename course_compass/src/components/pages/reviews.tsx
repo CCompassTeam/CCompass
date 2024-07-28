@@ -15,20 +15,32 @@ import { Key } from 'react';
 interface Course {
   code: string;
   title: string;
+  instructor: string;
 }
 
 const courses: Course[] = [
   {
     code: 'CPSC 100',
     title: 'Introduction to Computer Science and Programming I',
+    instructor: 'Professor Sara Lee',
   },
   {
     code: 'CPSC 110',
     title: 'Introduction to Computer Science and Programming II',
+    instructor: 'Dr. Harry', 
   },
-  { code: 'CPSC 121', title: 'Introduction to Discrete Mathematics' },
-  { code: 'CPSC 210', title: 'Object Oriented Design in Java' },
-  { code: 'CPSC 220', title: 'Introduction to the C programming language' },
+  { code: 'CPSC 121', 
+    title: 'Introduction to Discrete Mathematics',
+    instructor: 'Professor Arrvindh',
+  },
+  { code: 'CPSC 210', 
+    title: 'Object Oriented Design in Java', 
+    instructor: 'Professor Arrvindh',
+  },
+  { code: 'CPSC 220', 
+    title: 'Introduction to the C programming language',
+    instructor: 'Professor Harel',
+  },
 ];
 
 export default function Reviews() {
