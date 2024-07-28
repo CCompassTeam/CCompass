@@ -17,19 +17,12 @@ import { useCourse } from '../../context/CourseContext';
 import { ArrowBackIcon } from '@/components/ui/icons';
 import { useRouter } from 'next/navigation';
 
-
-
 interface ReviewMetric {
   type: 'Comprehensiveness' | 'Fluency' | 'Pace' | string;
   value: number;
 }
 
 function ReviewMetricCard({ review }: { review: ReviewMetric }) {
-  const router = useRouter();
-
- const navigateBack = () => {
-    router.push('/reviewHistory');
-  };
 
   const type: {
     [key: string]: {
@@ -89,11 +82,7 @@ function ReviewMetricCard({ review }: { review: ReviewMetric }) {
   const currentType = type[review.type];
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold cursor-pointer" onClick={navigateBack}>
-        <ArrowBackIcon />
-      </h1>
-    
+    <div>    
     <div className="flex flex-col gap-4 items-center">
       <h2 className="text-lg font-bold bg-gradient-to-r from-gradient-primary-l to-gradient-primary-r bg-clip-text text-transparent">
         {review.type}
@@ -173,9 +162,20 @@ function ReviewCommentCard({ comment }: { comment: ReviewComment }) {
 
 export default function Page() {
   const { selectedCourse } = useCourse();
+  const router = useRouter();
+  const navigateBack = () => {
+    router.push('/reviewHistory');
+  };
+
+  if (!selectedCourse) {
+    return <div>No course selected</div>;
+  }
 
   return (
     <div className="flex flex-col items-center gap-12">
+      <h1 className="text-3xl font-bold cursor-pointer" onClick={navigateBack}>
+        <ArrowBackIcon />
+      </h1>
       <div className="flex flex-col items-center pt-6">
         <h1 className="text-xl font-bold">{selectedCourse.instructor}</h1>
         <p className="text-gray-400">{`Courses taught: ${selectedCourse.code}`}</p>
