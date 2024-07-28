@@ -1,4 +1,4 @@
-import Reviews from "@/components/pages/reviews";
+import Reviews from '@/components/pages/reviews';
 
 export default function Onboard() {
   return (

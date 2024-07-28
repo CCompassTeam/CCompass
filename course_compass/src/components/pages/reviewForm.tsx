@@ -1,49 +1,38 @@
 // src/app/reviewForm/page.tsx
-"use client";
-import { useCourse } from "../../app/context/CourseContext";
-import { useState } from "react";
-import { Slider, Button, Textarea, Radio, RadioGroup } from "@nextui-org/react";
-import { useRouter } from "next/navigation";
-import { ArrowBackIcon } from "../ui/icons";
-import {
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  useDisclosure,
-} from "@nextui-org/react";
+'use client';
+
+import { useState } from 'react';
+import { useCourse } from '../../app/context/CourseContext';
+import { Slider, Button, Textarea, Radio, RadioGroup, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure } from '@nextui-org/react';
+import { useRouter } from 'next/navigation';
+import { ArrowBackIcon } from '../ui/icons';
 
 export default function ReviewForm() {
   const { selectedCourse } = useCourse();
   const router = useRouter();
-  const [professorComprehensive, setProfessorComprehensive] =
-    useState<number>(3);
+  const [professorComprehensive, setProfessorComprehensive] = useState<number>(3);
   const [professorFluency, setProfessorFluency] = useState<number>(3);
   const [professorPace, setProfessorPace] = useState<number>(2);
   const [courseDifficulty, setCourseDifficulty] = useState<number>(3);
   const [courseLoad, setCourseLoad] = useState<number>(3);
   const [coursePace, setCoursePace] = useState<number>(2);
-  const [takeAgain, setTakeAgain] = useState<string>("Yes");
-  const [courseReview, setCourseReview] = useState<string>("");
-  const [instructorReview, setInstructorReview] = useState<string>("");
-
+  const [takeAgain, setTakeAgain] = useState<string>('Yes');
+  const [courseReview, setCourseReview] = useState<string>('');
+  const [instructorReview, setInstructorReview] = useState<string>('');
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
-  const handleSliderChange =
-    (setter: React.Dispatch<React.SetStateAction<number>>) =>
-    (value: number | number[]) => {
-      if (typeof value === "number") {
-        setter(value);
-      }
-    };
+  const handleSliderChange = (setter: React.Dispatch<React.SetStateAction<number>>) => (value: number | number[]) => {
+    if (typeof value === 'number') {
+      setter(value);
+    }
+  };
 
   const handleSubmit = () => {
     setIsSubmitted(true);
   };
 
   const navigateBack = () => {
-    router.push("/reviewHistory");
+    router.push('/reviewHistory');
   };
 
   const handleDeleteReview = () => {
@@ -54,9 +43,9 @@ export default function ReviewForm() {
     setCourseDifficulty(3);
     setCourseLoad(3);
     setCoursePace(2);
-    setTakeAgain("Yes");
-    setCourseReview("");
-    setInstructorReview("");
+    setTakeAgain('Yes');
+    setCourseReview('');
+    setInstructorReview('');
   };
 
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -70,19 +59,16 @@ export default function ReviewForm() {
       <h1 className="text-3xl font-bold cursor-pointer" onClick={navigateBack}>
         <ArrowBackIcon />
       </h1>
-      <div className="text-xl flex flex-col items-center gap-4 ">
+      <div className="text-xl flex flex-col items-center gap-4">
         <h1 className="text-2xl font-bold">
-          {selectedCourse.code}-{selectedCourse.instructor}
+          {selectedCourse.code} - {selectedCourse.instructor}
         </h1>
         {isSubmitted ? (
           <div className="w-full max-w-4xl">
-            <h2 className="text-xl font-bold text-purple-700 mb-[1rem]">
-              Review Submitted
-            </h2>
+            <h2 className="text-xl font-bold text-purple-700 mb-[1rem]">Review Submitted</h2>
             <div className="flex flex-col gap-2">
               <p>
-                <strong>Professor Comprehensive:</strong>{" "}
-                {professorComprehensive}
+                <strong>Professor Comprehensive:</strong> {professorComprehensive}
               </p>
               <p>
                 <strong>Professor Fluency:</strong> {professorFluency}
@@ -108,45 +94,22 @@ export default function ReviewForm() {
               <p>
                 <strong>Instructor Review:</strong> {instructorReview}
               </p>
-
-              <Button
-                className="bg-red-500 font-bold text-white px-8 py-3 mt-4"
-                onClick={onOpen}
-              >
+              <Button className="bg-red-500 font-bold text-white px-8 py-3 mt-4" onClick={onOpen}>
                 Delete Review
               </Button>
-
-              <Modal
-                isOpen={isOpen}
-                onOpenChange={onOpenChange}
-                isDismissable={false}
-                isKeyboardDismissDisabled={true}
-              >
+              <Modal isOpen={isOpen} onOpenChange={onOpenChange} isDismissable={false} isKeyboardDismissDisabled={true}>
                 <ModalContent>
                   {(onClose) => (
                     <>
-                      <ModalHeader className="flex flex-col gap-1">
-                        Delete a review?
-                      </ModalHeader>
+                      <ModalHeader className="flex flex-col gap-1">Delete a review?</ModalHeader>
                       <ModalBody>
-                        <p>
-                          Once you delete your review you will not be able to
-                          leave another review for this course.
-                        </p>
+                        <p>Once you delete your review you will not be able to leave another review for this course.</p>
                       </ModalBody>
                       <ModalFooter>
-                        <Button
-                          color="danger"
-                          variant="light"
-                          onPress={onClose}
-                        >
+                        <Button color="danger" variant="light" onPress={onClose}>
                           Cancel
                         </Button>
-                        <Button
-                          className="flex items-center bg-red-500 text-white px-8 py-3"
-                          onClick={handleDeleteReview}
-                          onPress={onClose}
-                        >
+                        <Button className="flex items-center bg-red-500 text-white px-8 py-3" onClick={() => { handleDeleteReview(); onClose(); }}>
                           Delete
                         </Button>
                       </ModalFooter>
@@ -159,279 +122,176 @@ export default function ReviewForm() {
         ) : (
           <div className="w-full max-w-4xl flex flex-col gap-[2rem]">
             <section>
-              <h2 className="text-xl font-bold text-purple-700 mb-[1rem]">
-                Professor
-              </h2>
+              <h2 className="text-xl font-bold text-purple-700 mb-[1rem]">Professor</h2>
               <div className="flex flex-col gap-[2rem] ml-[2rem]">
                 <div className="grid grid-cols-2 gap-[5rem]">
-                  <label>How comprehensive is the professor?</label>
+                  <label htmlFor="professorComprehensive">How comprehensive is the professor?</label>
                   <Slider
+                    id="professorComprehensive"
                     size="sm"
                     minValue={1}
                     maxValue={5}
                     step={1}
-                    showSteps={true}
+                    showSteps
                     color="secondary"
                     value={professorComprehensive}
-                    renderThumb={(props) => (
-                      <div
-                        {...props}
-                        className="group top-1/2 bg-background border-small shadow-medium rounded-full cursor-grab data-[dragging=true]:cursor-grabbing"
-                      >
-                        <span className="transition-transform bg-gradient-to-br shadow-small from-secondary-100 to-secondary-500 rounded-full w-5 h-5 block group-data-[dragging=true]:scale-80" />
-                      </div>
-                    )}
-                    classNames={{
-                      base: "max-w-md gap-3",
-                    }}
                     onChange={handleSliderChange(setProfessorComprehensive)}
                     marks={[
-                      { value: 1, label: "Not" },
-                      { value: 2, label: "Somewhat" },
-                      { value: 3, label: "Fairly" },
-                      { value: 4, label: "Very" },
-                      { value: 5, label: "Highly" },
+                      { value: 1, label: 'Not' },
+                      { value: 2, label: 'Somewhat' },
+                      { value: 3, label: 'Fairly' },
+                      { value: 4, label: 'Very' },
+                      { value: 5, label: 'Highly' },
                     ]}
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-[5rem]">
-                  <label>How fluent is the professor?</label>
+                  <label htmlFor="professorFluency">How fluent is the professor?</label>
                   <Slider
+                    id="professorFluency"
                     size="sm"
                     minValue={1}
                     maxValue={5}
                     step={1}
-                    showSteps={true}
+                    showSteps
                     color="secondary"
                     value={professorFluency}
-                    renderThumb={(props) => (
-                      <div
-                        {...props}
-                        className="group top-1/2 bg-background border-small shadow-medium rounded-full cursor-grab data-[dragging=true]:cursor-grabbing"
-                      >
-                        <span className="transition-transform bg-gradient-to-br shadow-small from-secondary-100 to-secondary-500 rounded-full w-5 h-5 block group-data-[dragging=true]:scale-80" />
-                      </div>
-                    )}
-                    classNames={{
-                      base: "max-w-md gap-3",
-                    }}
                     onChange={handleSliderChange(setProfessorFluency)}
                     marks={[
-                      { value: 1, label: "Not" },
-                      { value: 2, label: "Somewhat" },
-                      { value: 3, label: "Fairly" },
-                      { value: 4, label: "Very" },
-                      { value: 5, label: "Highly" },
+                      { value: 1, label: 'Not' },
+                      { value: 2, label: 'Somewhat' },
+                      { value: 3, label: 'Fairly' },
+                      { value: 4, label: 'Very' },
+                      { value: 5, label: 'Highly' },
                     ]}
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-[5rem]">
-                  <label>How is the pace of the professor?</label>
+                  <label htmlFor="professorPace">How is the pace of the professor?</label>
                   <Slider
+                    id="professorPace"
                     size="sm"
                     minValue={1}
                     maxValue={3}
                     step={1}
-                    showSteps={true}
+                    showSteps
                     color="secondary"
                     value={professorPace}
-                    renderThumb={(props) => (
-                      <div
-                        {...props}
-                        className="group top-1/2 bg-background border-small shadow-medium rounded-full cursor-grab data-[dragging=true]:cursor-grabbing"
-                      >
-                        <span className="transition-transform bg-gradient-to-br shadow-small from-secondary-100 to-secondary-500 rounded-full w-5 h-5 block group-data-[dragging=true]:scale-80" />
-                      </div>
-                    )}
-                    classNames={{
-                      base: "max-w-md gap-3",
-                    }}
                     onChange={handleSliderChange(setProfessorPace)}
                     marks={[
-                      { value: 1, label: "Slow" },
-                      { value: 2, label: "Just Right" },
-                      { value: 3, label: "Fast" },
+                      { value: 1, label: 'Slow' },
+                      { value: 2, label: 'Just Right' },
+                      { value: 3, label: 'Fast' },
                     ]}
                   />
                 </div>
               </div>
             </section>
-
             <section>
-              <h2 className="text-xl font-bold text-purple-700 mb-[1rem]">
-                Course
-              </h2>
+              <h2 className="text-xl font-bold text-purple-700 mb-[1rem]">Course</h2>
               <div className="flex flex-col gap-[2rem] ml-[2rem]">
                 <div className="grid grid-cols-2 gap-[5rem]">
-                  <label>How difficult is the course content?</label>
+                  <label htmlFor="courseDifficulty">How difficult is the course content?</label>
                   <Slider
+                    id="courseDifficulty"
                     size="sm"
                     minValue={1}
                     maxValue={5}
                     step={1}
-                    showSteps={true}
+                    showSteps
                     color="secondary"
                     value={courseDifficulty}
-                    renderThumb={(props) => (
-                      <div
-                        {...props}
-                        className="group top-1/2 bg-background border-small shadow-medium rounded-full cursor-grab data-[dragging=true]:cursor-grabbing"
-                      >
-                        <span className="transition-transform bg-gradient-to-br shadow-small from-secondary-100 to-secondary-500 rounded-full w-5 h-5 block group-data-[dragging=true]:scale-80" />
-                      </div>
-                    )}
-                    classNames={{
-                      base: "max-w-md gap-3",
-                    }}
                     onChange={handleSliderChange(setCourseDifficulty)}
                     marks={[
-                      { value: 1, label: "Very" },
-                      { value: 2, label: "Easy" },
-                      { value: 3, label: "Moderate" },
-                      { value: 4, label: "Hard" },
-                      { value: 5, label: "Very Hard" },
+                      { value: 1, label: 'Very' },
+                      { value: 2, label: 'Easy' },
+                      { value: 3, label: 'Moderate' },
+                      { value: 4, label: 'Hard' },
+                      { value: 5, label: 'Very Hard' },
                     ]}
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-[5rem]">
-                  <label>How heavy is the course load?</label>
+                  <label htmlFor="courseLoad">How heavy is the course load?</label>
                   <Slider
+                    id="courseLoad"
                     size="sm"
                     minValue={1}
                     maxValue={5}
                     step={1}
-                    showSteps={true}
+                    showSteps
                     color="secondary"
                     value={courseLoad}
-                    renderThumb={(props) => (
-                      <div
-                        {...props}
-                        className="group top-1/2 bg-background border-small shadow-medium rounded-full cursor-grab data-[dragging=true]:cursor-grabbing"
-                      >
-                        <span className="transition-transform bg-gradient-to-br shadow-small from-secondary-100 to-secondary-500 rounded-full w-5 h-5 block group-data-[dragging=true]:scale-80" />
-                      </div>
-                    )}
-                    classNames={{
-                      base: "max-w-md gap-3",
-                    }}
                     onChange={handleSliderChange(setCourseLoad)}
                     marks={[
-                      { value: 1, label: "Very Light" },
-                      { value: 2, label: "Light" },
-                      { value: 3, label: "Moderate" },
-                      { value: 4, label: "Heavy" },
-                      { value: 5, label: "Very Heavy" },
+                      { value: 1, label: 'Very' },
+                      { value: 2, label: 'Light' },
+                      { value: 3, label: 'Manageable' },
+                      { value: 4, label: 'Heavy' },
+                      { value: 5, label: 'Very Heavy' },
                     ]}
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-[5rem]">
-                  <label>How is the pace of the course?</label>
+                  <label htmlFor="coursePace">How is the pace of the course?</label>
                   <Slider
+                    id="coursePace"
                     size="sm"
                     minValue={1}
                     maxValue={3}
                     step={1}
-                    showSteps={true}
+                    showSteps
                     color="secondary"
                     value={coursePace}
-                    renderThumb={(props) => (
-                      <div
-                        {...props}
-                        className="group top-1/2 bg-background border-small shadow-medium rounded-full cursor-grab data-[dragging=true]:cursor-grabbing"
-                      >
-                        <span className="transition-transform bg-gradient-to-br shadow-small from-secondary-100 to-secondary-500 rounded-full w-5 h-5 block group-data-[dragging=true]:scale-80" />
-                      </div>
-                    )}
-                    classNames={{
-                      base: "max-w-md gap-3",
-                    }}
                     onChange={handleSliderChange(setCoursePace)}
                     marks={[
-                      { value: 1, label: "Slow" },
-                      { value: 2, label: "Just Right" },
-                      { value: 3, label: "Fast" },
+                      { value: 1, label: 'Slow' },
+                      { value: 2, label: 'Just Right' },
+                      { value: 3, label: 'Fast' },
                     ]}
                   />
                 </div>
+              </div>
+            </section>
+            <section>
+              <h2 className="text-xl font-bold text-purple-700 mb-[1rem]">General</h2>
+              <div className="flex flex-col gap-[2rem] ml-[2rem]">
                 <div className="grid grid-cols-2 gap-[5rem]">
-                  <label>Would you take this course again?</label>
+                  <label htmlFor="takeAgain">Would you take this course again?</label>
                   <RadioGroup
+                    id="takeAgain"
+                    orientation="horizontal"
+                    color="secondary"
                     value={takeAgain}
                     onValueChange={setTakeAgain}
-                    orientation="horizontal"
                   >
                     <Radio value="Yes">Yes</Radio>
                     <Radio value="No">No</Radio>
                   </RadioGroup>
                 </div>
+                <div className="grid grid-cols-2 gap-[5rem]">
+                  <label htmlFor="courseReview">Review of the course</label>
+                  <Textarea
+                    id="courseReview"
+                    value={courseReview}
+                    onChange={(e) => setCourseReview(e.target.value)}
+                    placeholder="Course Review"
+                  />
+                </div>
+                <div className="grid grid-cols-2 gap-[5rem]">
+                  <label htmlFor="instructorReview">Review of the instructor</label>
+                  <Textarea
+                    id="instructorReview"
+                    value={instructorReview}
+                    onChange={(e) => setInstructorReview(e.target.value)}
+                    placeholder="Instructor Review"
+                  />
+                </div>
               </div>
             </section>
-
-            <section>
-              <h2 className="text-xl font-bold text-purple-700 mb-[1rem]">
-                Additional
-              </h2>
-              <label>
-                Is there anything you would tell a fellow student who is
-                interested in taking this course?
-              </label>
-              <p className="font-bold mt-[1rem]">About the course?</p>
-              <Textarea
-                placeholder="Leave a review about the course"
-                minRows={3}
-                value={courseReview}
-                onChange={(e) => setCourseReview(e.target.value)}
-                className="mb-2"
-              />
-              <p className="font-bold mt-[1rem]">About the instructor?</p>
-              <Textarea
-                placeholder="Leave a review about the instructor"
-                minRows={3}
-                value={instructorReview}
-                onChange={(e) => setInstructorReview(e.target.value)}
-              />
-            </section>
-
-            <Button
-              onPress={onOpen}
-              className="bg-gradient-to-r from-gradient-primary-l to-gradient-primary-r text-white flex w-fit"
-            >
-              Submit Review
+            <Button className="bg-purple-500 font-bold text-white px-8 py-3 mt-4" onClick={handleSubmit}>
+              Submit
             </Button>
-            <Modal
-              isOpen={isOpen}
-              onOpenChange={onOpenChange}
-              isDismissable={false}
-              isKeyboardDismissDisabled={true}
-            >
-              <ModalContent>
-                {(onClose) => (
-                  <>
-                    <ModalHeader className="flex flex-col gap-1">
-                      Leave a review?
-                    </ModalHeader>
-                    <ModalBody>
-                      <p>
-                        Once you leave a review, you cannot edit or leave
-                        another one.
-                      </p>
-                    </ModalBody>
-                    <ModalFooter>
-                      <Button color="danger" variant="light" onPress={onClose}>
-                        Cancel
-                      </Button>
-                      <Button
-                        className="flex items-center bg-gradient-to-r from-gradient-primary-l to-gradient-primary-r text-white px-8 py-3"
-                        onClick={handleSubmit}
-                        onPress={onClose}
-                      >
-                        Submit
-                      </Button>
-                    </ModalFooter>
-                  </>
-                )}
-              </ModalContent>
-            </Modal>
           </div>
         )}
       </div>

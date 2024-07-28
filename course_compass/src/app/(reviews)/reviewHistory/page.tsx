@@ -1,4 +1,4 @@
-import CourseHistory from "@/components/pages/leaveReview";
+import CourseHistory from '@/components/pages/leaveReview';
 
 export default function Onboard() {
   return (

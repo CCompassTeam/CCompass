@@ -54,20 +54,17 @@ const steps = [
 ];
 
 export default function MultiForm() {
-  const [previousStep, setPreviousStep] = useState(0);
   const [currentStep, setCurrentStep] = useState(0);
 
   const next = async () => {
     // TODO: trigger validation on each step
     if (currentStep < steps.length - 1) {
-      setPreviousStep(currentStep);
       setCurrentStep((step) => step + 1);
     }
   };
 
   const prev = () => {
     if (currentStep > 0) {
-      setPreviousStep(currentStep);
       setCurrentStep((step) => step - 1);
     }
   };
@@ -79,39 +76,38 @@ export default function MultiForm() {
           {
             currentStep === 0
             && (
-
-            <>
-              <h1 className="flex flex-col text-3xl py-7">
-                {steps[0].name}
-              </h1>
-              {steps[0].fields.map((field) => (
-                <>
-                  <h2 className="flex flex-col text-3m py-1">{field.title}</h2>
-                  <input
-                    type="text"
-                    className="w-full p-2 border border-gray-300 rounded-md"
-                    required
-                  />
-                </>
-              ))}
-            </>
+              <>
+                <h1 className="flex flex-col text-3xl py-7">
+                  {steps[0].name}
+                </h1>
+                {steps[0].fields.map((field) => (
+                  <>
+                    <h2 className="flex flex-col text-3m py-1">{field.title}</h2>
+                    <input
+                      type="text"
+                      className="w-full p-2 border border-gray-300 rounded-md"
+                      required
+                    />
+                  </>
+                ))}
+              </>
             )
-        }
+          }
           {
             (currentStep === 1 || currentStep === 2) && (
-            <>
-              <h1 className="flex flex-col text-3xl py-7">
-                {steps[currentStep].name}
-              </h1>
-              {steps[currentStep].fields.map((field) => (
-                <>
-                  <h2 className="flex flex-col text-3m py-1">{field.title}</h2>
-                  <DropdownInput options={[...field.options]} />
-                </>
-              ))}
-            </>
+              <>
+                <h1 className="flex flex-col text-3xl py-7">
+                  {steps[currentStep].name}
+                </h1>
+                {steps[currentStep].fields.map((field) => (
+                  <>
+                    <h2 className="flex flex-col text-3m py-1">{field.title}</h2>
+                    <DropdownInput options={[...field.options]} />
+                  </>
+                ))}
+              </>
             )
-        }
+          }
         </form>
       </section>
       <footer className="flex w-screen justify-around pt-10">
@@ -125,6 +121,5 @@ export default function MultiForm() {
 
       </footer>
     </div>
-
   );
 }

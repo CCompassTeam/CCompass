@@ -1,6 +1,5 @@
-// src/app/reviews/page.tsx
-
 'use client';
+
 import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import {
@@ -95,7 +94,7 @@ export default function Reviews() {
           </div>
           <div>
             <Button
-              className='bg-gradient-to-r from-gradient-button-l to-gradient-button-r font-bold text-white px-8 py-3'
+              className="bg-gradient-to-r from-gradient-primary-l to-gradient-primary-r text-white"
               onClick={navigateToLeaveReview}
             >
               Leave a Review

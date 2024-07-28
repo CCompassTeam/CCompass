@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export function CourseCompassLogoIcon() {
   return (
     <svg
@@ -148,6 +150,11 @@ export const ChevronDownIcon = ({ size = 24, color = "currentColor" }) => (
   </svg>
 );
 
+ChevronDownIcon.propTypes = {
+  size: PropTypes.number,
+  color: PropTypes.string,
+};
+
 export const ArrowBackIcon = ({ size = 24, color = "currentColor" }) => (
   <svg
     width={size}
@@ -162,3 +169,8 @@ export const ArrowBackIcon = ({ size = 24, color = "currentColor" }) => (
     />
   </svg>
 );
+
+ArrowBackIcon.propTypes = {
+  size: PropTypes.number,
+  color: PropTypes.string,
+};

@@ -1,4 +1,4 @@
-import ReviewForm from "@/components/pages/reviewForm";
+import ReviewForm from '@/components/pages/reviewForm';
 
 export default function Onboard() {
   return (
